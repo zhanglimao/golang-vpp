@@ -11,12 +11,12 @@ import (
 )
 
 type Intervpp struct {
-    Name string `json:"name"`
-    Type string `json:"type"`
-    State string `json:"state"`
-    IpAddr string `json:"ipaddr“`
-    Mac string `json:"mac"`
-    SockPath string `json:"sockpath"`
+    Name string `json:"name,omitempty"`
+    Type string `json:"type,omitempty"`
+    State string `json:"state,omitempty"`
+    IpAddr string `json:"ipaddr,omitempty“`
+    Mac string `json:"mac,omitempty"`
+    SockPath string `json:"sockpath,omitempty"`
 }
 
 func (element *Intervpp) GetConfigureFromVpp(ch api.Channel) interface{} {
@@ -38,6 +38,7 @@ func (element *Intervpp) GetConfigureFromVpp(ch api.Channel) interface{} {
         // fmt.Printf("\nInterface %q: %+v\n", ifaceName, msg)
         rets=append(rets, msg)
     }
+    //fmt.Printf("\nInterface rets: %+v\n", rets)
     return rets
 }
 
@@ -67,7 +68,7 @@ func (element *Intervpp) FormatInterType(interName string) string {
     return "UnKnowType"
  }
 
-func (element *Intervpp) FormatConfigToSt(config interface {}) {
+func (element *Intervpp) FormatConfigToSt(config interface {}) interface {} {
     cf := config.([]*interfaces.SwInterfaceDetails)
     rets := []Intervpp{}
 
@@ -112,11 +113,12 @@ func (element *Intervpp) FormatConfigToSt(config interface {}) {
         } else {
             inter.State = "DOWN"
         }
-        
 
         rets=append(rets, inter)
     }
     fmt.Printf("\n interface: %+v\n", rets)
+
+    return rets
 }
 
 // ---------------------function callback----------------------

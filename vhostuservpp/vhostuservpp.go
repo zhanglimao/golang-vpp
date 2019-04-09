@@ -28,10 +28,7 @@ func (element *VhostUserVpp) GetConfigureFromVpp(ch api.Channel) interface{}{
         if err != nil {
             fmt.Println("ERROR:", err)
         }
-        // ifaceName := strings.TrimFunc(string(msg.InterfaceName), func(r rune) bool {
-        //     return r == 0x00
-        // })
-        // fmt.Printf("\nInterface %q: %+v\n", ifaceName, msg)
+
         rets=append(rets, msg)
     }
 
@@ -57,7 +54,6 @@ func (element *VhostUserVpp) FormatConfigToSt(config interface {}) interface {} 
         vhostuser.Index = ele.SwIfIndex
         vhostuser.SockPath = socketpath
         vhostuser.Server = ele.IsServer
-        //vhostuser.Server = element.FormatInterType(ifaceName)
 
         rets=append(rets, vhostuser)
     }

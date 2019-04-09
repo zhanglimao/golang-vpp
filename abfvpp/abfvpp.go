@@ -5,20 +5,20 @@ import (
 )
 
 type Abfpolicy struct {
-    PolicyId int `json:"policyid"`
-    AclId int `json:"aclid"`
-    Via string `json:"via"`
+    PolicyId int `json:"policyid,omitempty"`
+    AclId int `json:"aclid,omitempty"`
+    Via string `json:"via,omitempty"`
 }
 
 type Abfattach struct {
-    PolicyId int `json:"policyid"`
-    Type string `json:"type"`
-    Intervpp string `json:"intervpp"`
+    PolicyId int `json:"policyid,omitempty"`
+    Type string `json:"type,omitempty"`
+    Intervpp string `json:"intervpp,omitempty"`
 }
 
 type Abf struct {
-    Policy []Abfpolicy `json:"policy"`
-    Attach []Abfattach `json:"attach"`
+    Policy []Abfpolicy `json:"policy,omitempty"`
+    Attach []Abfattach `json:"attach,omitempty"`
 }
 
 func (element Abf) CallBackFunc() {

@@ -11,19 +11,19 @@ import (
 )
 
 type aclRule struct {
-	IsPermit               uint8 `json:"isPermit"`
-	IsIPv6                 uint8 `json:"isIPv6"`
-	SrcIPAddr              string `json:"srcipaddr"`
-	SrcIPPrefixLen         uint8 `json:"srcIPPrefixLen"`
-	DstIPAddr              string `json:"dstipaddr"`
-	DstIPPrefixLen         uint8 `json:"dstIPPrefixLen"`
-	Proto                  uint8 `json:"proto"`
-	SrcportOrIcmptypeFirst uint16 `json:"srcportOrIcmptypeFirst"`
-	SrcportOrIcmptypeLast  uint16 `json:"srcportOrIcmptypeLast"`
-	DstportOrIcmpcodeFirst uint16 `json:"dstportOrIcmpcodeFirst"`
-	DstportOrIcmpcodeLast  uint16 `json:"dstportOrIcmpcodeLast"`
-	TCPFlagsMask           uint8 `json:"tcpflagmask"`
-	TCPFlagsValue          uint8 `json:"tcpflagvalue"`
+	IsPermit               uint8 `json:"isPermit,omitempty"`
+	IsIPv6                 uint8 `json:"isIPv6,omitempty"`
+	SrcIPAddr              string `json:"srcipaddr,omitempty"`
+	SrcIPPrefixLen         uint8 `json:"srcIPPrefixLen,omitempty"`
+	DstIPAddr              string `json:"dstipaddr,omitempty"`
+	DstIPPrefixLen         uint8 `json:"dstIPPrefixLen,omitempty"`
+	Proto                  uint8 `json:"proto,omitempty"`
+	SrcportOrIcmptypeFirst uint16 `json:"srcportOrIcmptypeFirst,omitempty"`
+	SrcportOrIcmptypeLast  uint16 `json:"srcportOrIcmptypeLast,omitempty"`
+	DstportOrIcmpcodeFirst uint16 `json:"dstportOrIcmpcodeFirst,omitempty"`
+	DstportOrIcmpcodeLast  uint16 `json:"dstportOrIcmpcodeLast,omitempty"`
+	TCPFlagsMask           uint8 `json:"tcpflagmask,omitempty"`
+	TCPFlagsValue          uint8 `json:"tcpflagvalue,omitempty"`
 }
 
 type Acls struct {
@@ -93,7 +93,7 @@ func UINT8ToInt(bs []uint8) int {
 	//return ret
 }
 
-func (element *Acls) FormatConfigToSt(config interface {}) {
+func (element *Acls) FormatConfigToSt(config interface {}) interface {}{
 	cf := config.([]*acl.ACLDetails)
 	rets := []Acls{}
 
@@ -135,6 +135,7 @@ func (element *Acls) FormatConfigToSt(config interface {}) {
 		rets=append(rets, msg)
 	}
 	fmt.Printf("rets: %+v\n", rets)
+	return rets
 }
 
 func (element Acls) CallBackFunc() {

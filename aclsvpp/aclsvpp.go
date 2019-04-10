@@ -11,19 +11,19 @@ import (
 )
 
 type aclRule struct {
-	IsPermit               uint8 `json:"isPermit,omitempty"`
-	IsIPv6                 uint8 `json:"isIPv6,omitempty"`
-	SrcIPAddr              string `json:"srcipaddr,omitempty"`
-	SrcIPPrefixLen         uint8 `json:"srcIPPrefixLen,omitempty"`
-	DstIPAddr              string `json:"dstipaddr,omitempty"`
-	DstIPPrefixLen         uint8 `json:"dstIPPrefixLen,omitempty"`
-	Proto                  uint8 `json:"proto,omitempty"`
-	SrcportOrIcmptypeFirst uint16 `json:"srcportOrIcmptypeFirst,omitempty"`
-	SrcportOrIcmptypeLast  uint16 `json:"srcportOrIcmptypeLast,omitempty"`
-	DstportOrIcmpcodeFirst uint16 `json:"dstportOrIcmpcodeFirst,omitempty"`
-	DstportOrIcmpcodeLast  uint16 `json:"dstportOrIcmpcodeLast,omitempty"`
-	TCPFlagsMask           uint8 `json:"tcpflagmask,omitempty"`
-	TCPFlagsValue          uint8 `json:"tcpflagvalue,omitempty"`
+	IsPermit               uint8
+	IsIPv6                 uint8
+	SrcIPAddr              string
+	SrcIPPrefixLen         uint8
+	DstIPAddr              string
+	DstIPPrefixLen         uint8
+	Proto                  uint8
+	SrcportOrIcmptypeFirst uint16
+	SrcportOrIcmptypeLast  uint16
+	DstportOrIcmpcodeFirst uint16
+	DstportOrIcmpcodeLast  uint16
+	TCPFlagsMask           uint8
+	TCPFlagsValue          uint8
 }
 
 type Acls struct {

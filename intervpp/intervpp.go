@@ -11,12 +11,12 @@ import (
 )
 
 type Intervpp struct {
-    Name string `json:"name,omitempty"`
-    Type string `json:"type,omitempty"`
-    State string `json:"state,omitempty"`
-    IpAddr string `json:"ipaddr,omitempty“`
-    Mac string `json:"mac,omitempty"`
-    SockPath string `json:"sockpath,omitempty"`
+    Name string
+    Type string
+    State string
+    IpAddr string
+    Mac string
+    SockPath string
 }
 
 func (element *Intervpp) GetConfigureFromVpp(ch api.Channel) interface{} {

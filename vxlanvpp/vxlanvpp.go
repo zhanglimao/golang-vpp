@@ -5,9 +5,9 @@ import (
 )
 
 type Vxlan struct {
-    Src string `json:"src,omitempty"`
-    Dst string `json:"dst,omitempty"`
-    Vni int `json:"vni,omitempty"`
+    Src string
+    Dst string
+    Vni int
 }
 
 func (element Vxlan) CallBackFunc() {
